@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 import { MdChevronRight } from 'react-icons/md';
 import { FaPlus } from 'react-icons/fa';
 
@@ -11,10 +11,12 @@ export default function Dashboard() {
       <header>
         <strong>Meus Meetups</strong>
         <aside>
-          <button type="button">
-            <FaPlus size={12} color="#fff" />
-            <span>Novo Meetup</span>
-          </button>
+        <Link to="/newmeeting">
+          <div>
+              <FaPlus size={12} color="#fff" />
+              <span>Novo Meetup</span>  
+          </div>
+          </Link>
         </aside>
       </header>
 

@@ -7,7 +7,7 @@ import SignUp from '../pages/SignUp';
 
 import Dashboard from '../pages/Dashboard';
 import Profile from '../pages/Profile';
-import Meeting from '../pages/Meeting';
+import NewMeeting from '../pages/NewMeeting';
 
 export default function Routes() {
   return (
@@ -16,7 +16,7 @@ export default function Routes() {
       <Route path="/register" component={SignUp} />
 
       <Route path="/dashboard" component={Dashboard} isPrivate />
-      <Route path="/meeting" component={Meeting} isPrivate />
+      <Route path="/newmeeting" component={NewMeeting} isPrivate />
       <Route path="/profile" component={Profile} isPrivate />
     </Switch>
   );

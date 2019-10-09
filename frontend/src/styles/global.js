@@ -16,6 +16,9 @@ export default createGlobalStyle`
         outline: 0;
     }
 
+    html {
+        overflow: hidden;
+    }
     html, body, #root {
         height: 100%;
     }
@@ -24,6 +27,12 @@ export default createGlobalStyle`
         -webkit-font-smoothing: antialiased;
     }
 
+    body > .mainwrapper {
+        width: 100vw;
+        height: 100vh;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch; /* enables “momentum” (smooth) scrolling */
+    }
     body, input, button {
         font: 14px 'Roboto', sans-serif;
     }

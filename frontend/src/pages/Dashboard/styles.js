@@ -24,10 +24,10 @@ export const Container = styled.div`
       display: flex;
       align-items: center;
 
-      button {
+      div {
         display: flex;
-        align-items: center;
-        padding: 10px;
+        align-items:center;
+        padding: 12px;
         border-radius: 4px;
         border: 0;
         background: #ff5c5c;
