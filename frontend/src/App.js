@@ -1,37 +1,30 @@
-import React, { Component } from 'react';
-import api from './services/api';
+import React from 'react';
+import { ToastContainer } from 'react-toastify';
+import { PersistGate } from 'redux-persist/integration/react';
+import { Provider } from 'react-redux';
+import { Router } from 'react-router-dom';
 
-export default class App extends Component {
-  state = {
-    result: '',
-    name: ''
-  }
+import './config/ReactotronConfig';
 
-  handleResponse = async e => {
-    const response = await api.post('/sessions', {
-      email: 'lucas@gmail.com',
-      password: '1234'
+import Routes from './routes';
+import history from './services/history';
 
-    });
+import { store, persistor } from './store';
 
-    console.log(response);
-      this.setState({
-        result: response,
-        name: response.data.user.name
-      })
-    };
+import GlobalStyle from './styles/global';
 
-  render(){
-    const { result, name } = this.state;
-
-    return (
-        <>
-          <button onClick={this.handleResponse}></button>
-          <h1>{name}</h1>
-        </>
-      );
-  }
+function App() {
+  return (
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <Router history={history}>
+          <Routes />
+          <GlobalStyle />
+          <ToastContainer autoClose={3000} />
+        </Router>
+      </PersistGate>
+    </Provider>
+  );
 }
 
-
-
+export default App;
