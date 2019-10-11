@@ -1,24 +1,19 @@
 import * as Yup from 'yup';
-import { addDays, startOfHour, parseISO, isBefore } from 'date-fns';
-import { Op } from 'sequelize';
+import { startOfHour, parseISO, isBefore } from 'date-fns';
 import Meeting from '../models/Meeting';
 import File from '../models/File';
 import User from '../models/User';
 
 class MeetingController {
     async index(req, res) {
-        const { date, page = 1 } = req.query;
         const meetings = await Meeting.findAll({
             where: {
                 user_id: req.userId,
-                canceled_at: null,
-                date: {
-                    [Op.between]: [parseISO(date), addDays(parseISO(date), 1)]
-                }
+                canceled_at: null
             },
             order: ['date'],
             limit: 10,
-            offset: (page - 1) * 20,
+
             attributes: ['id', 'title', 'description', 'location', 'date'],
             include: [
                 {
