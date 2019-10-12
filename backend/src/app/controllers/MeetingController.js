@@ -6,6 +6,13 @@ import User from '../models/User';
 
 class MeetingController {
     async index(req, res) {
+        const { id } = req.query;
+        if (id) {
+            const result = await Meeting.findOne({ where: { id } });
+
+            return res.json(result);
+        }
+
         const meetings = await Meeting.findAll({
             where: {
                 user_id: req.userId,

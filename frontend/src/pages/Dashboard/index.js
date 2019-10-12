@@ -16,6 +16,7 @@ export default function Dashboard() {
 
       const { data } = response;
       const meetups = data.map(meeting => ({
+        id: meeting.id,
         title: meeting.title,
         date: meeting.date
       }));
@@ -40,14 +41,14 @@ export default function Dashboard() {
       </header>
 
       <ul>
-        {meetings.map((time, index) => (
-          <Time key={index}>
+        {meetings.map(time => (
+          <Time key={time.id}>
             <strong>{time.title}</strong>
             <aside>
               <span>{time.date}</span>
-              <button type="button">
+              <Link to={`/meeting/${time.id}`}>
                 <MdChevronRight size={24} color="#FFF" />
-              </button>
+              </Link>
             </aside>
           </Time>
         ))}
