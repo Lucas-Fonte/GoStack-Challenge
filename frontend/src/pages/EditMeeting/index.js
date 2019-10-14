@@ -1,21 +1,29 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Input, Form } from '@rocketseat/unform';
-import { toast } from 'react-toastify';
 import api from '../../services/api';
 
 import { Container } from './styles';
 
 import BannerInput from '../../components/BannerInput';
 
-export default function NewMeeting() {
-  async function handleSubmit(data) {
-    toast.success('MeetUp Cadastrado');
-    await api.post('meetings', data);
-  }
+export default function EditMeeting({ match }) {
+  const [meeting, setMeeting] = useState([]);
+
+  useEffect(() => {
+    async function loadMeeting() {
+      const response = await api.get(`meetings?id=${match.params.meetingId}`);
+
+      const { data } = response;
+      setMeeting(data);
+    }
+
+    loadMeeting();
+  });
+
   return (
     <Container>
-      <Form onSubmit={handleSubmit}>
+      <Form initialData={meeting}>
         <BannerInput name="banner_id" />
         <Input name="title" placeholder="Titulo do Meetup" />
         <Input
@@ -27,7 +35,7 @@ export default function NewMeeting() {
         <Input name="date" placeholder="Data do meetup" />
         <Input name="location" placeholder="Localização" />
 
-        <button type="submit">Cadastrar Meetup</button>
+        <button type="submit">Atualizar Meetup</button>
       </Form>
     </Container>
   );

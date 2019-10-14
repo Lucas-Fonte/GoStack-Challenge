@@ -26,7 +26,7 @@ export const Container = styled.div`
 
       div {
         display: flex;
-        align-items:center;
+        align-items: center;
         padding: 12px;
         border-radius: 4px;
         border: 0;

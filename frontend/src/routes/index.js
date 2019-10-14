@@ -9,6 +9,7 @@ import Dashboard from '../pages/Dashboard';
 import Profile from '../pages/Profile';
 import Meeting from '../pages/Meeting';
 import NewMeeting from '../pages/NewMeeting';
+import EditMeeting from '../pages/EditMeeting';
 
 export default function Routes() {
   return (
@@ -18,6 +19,7 @@ export default function Routes() {
 
       <Route path="/dashboard" component={Dashboard} isPrivate />
       <Route path="/meeting/:meetingId" component={Meeting} isPrivate />
+      <Route path="/edit/:meetingId" component={EditMeeting} isPrivate />
       <Route path="/newmeeting" component={NewMeeting} isPrivate />
       <Route path="/profile" component={Profile} isPrivate />
     </Switch>

@@ -8,7 +8,22 @@ class MeetingController {
     async index(req, res) {
         const { id } = req.query;
         if (id) {
-            const result = await Meeting.findOne({ where: { id } });
+            const result = await Meeting.findOne({
+                where: { id },
+                attributes: ['id', 'title', 'description', 'location', 'date'],
+                include: [
+                    {
+                        model: File,
+                        as: 'banner',
+                        attributes: ['name', 'path', 'url']
+                    },
+                    {
+                        model: User,
+                        as: 'user',
+                        attributes: ['id', 'name']
+                    }
+                ]
+            });
 
             return res.json(result);
         }
@@ -19,8 +34,6 @@ class MeetingController {
                 canceled_at: null
             },
             order: ['date'],
-            limit: 10,
-
             attributes: ['id', 'title', 'description', 'location', 'date'],
             include: [
                 {
@@ -44,14 +57,15 @@ class MeetingController {
             title: Yup.string().required(),
             description: Yup.string().required(),
             location: Yup.string().required(),
-            date: Yup.date().required()
+            date: Yup.date().required(),
+            banner_id: Yup.number()
         });
 
         if (!(await schema.isValid(req.body))) {
             return res.status(400).json({ error: 'Validation failed' });
         }
 
-        const { title, description, location, date } = req.body;
+        const { title, description, location, date, banner_id } = req.body;
 
         const hourStart = startOfHour(parseISO(date));
 
@@ -80,7 +94,8 @@ class MeetingController {
             title,
             description,
             location,
-            date
+            date,
+            banner_id
         });
 
         return res.json(meeting);
