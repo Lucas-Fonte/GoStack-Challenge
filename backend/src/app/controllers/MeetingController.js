@@ -114,7 +114,7 @@ class MeetingController {
         }
 
         const meeting = await Meeting.findOne({
-            where: { title: req.body.title }
+            where: { id: req.query.id }
         });
 
         const {
@@ -132,6 +132,26 @@ class MeetingController {
             location,
             banner_id
         });
+    }
+
+    async delete(req, res) {
+        const meeting = await Meeting.findByPk(req.params.id);
+
+        if (meeting.user_id !== req.userId) {
+            return res.status(401).json({
+                error: "You don't have permission to cancel this meeting"
+            });
+        }
+
+        if (isBefore(meeting.date, new Date())) {
+            return res.status(401).json({
+                error: 'You cannot cancel past meetups'
+            });
+        }
+
+        await meeting.destroy();
+
+        return res.json({ meeting });
     }
 }
 

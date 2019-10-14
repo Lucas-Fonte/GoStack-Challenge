@@ -22,6 +22,7 @@ routes.put('/users', UserController.update);
 routes.post('/meetings', MeetingController.store);
 routes.put('/meetings', MeetingController.update);
 routes.get('/meetings', MeetingController.index);
+routes.delete('/meetings/:id', MeetingController.delete);
 
 routes.post('/files', upload.single('file'), FileController.store);
 

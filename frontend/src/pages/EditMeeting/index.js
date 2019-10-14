@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 import { Input, Form } from '@rocketseat/unform';
+import { toast } from 'react-toastify';
 import api from '../../services/api';
 
 import { Container } from './styles';
@@ -21,9 +22,13 @@ export default function EditMeeting({ match }) {
     loadMeeting();
   });
 
+  async function handleSubmit(data) {
+    toast.success('MeetUp atualizado com sucesso');
+    await api.put(`meetings?id=${match.params.meetingId}`, data);
+  }
   return (
     <Container>
-      <Form initialData={meeting}>
+      <Form initialData={meeting} onSubmit={handleSubmit}>
         <BannerInput name="banner_id" />
         <Input name="title" placeholder="Titulo do Meetup" />
         <Input

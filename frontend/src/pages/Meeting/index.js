@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaPlus, FaCalendarAlt, FaMapMarked } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 import api from '../../services/api';
 import photoCamera from '../../assets/photoCamera.svg';
 
@@ -27,6 +28,11 @@ export default function Meeting({ match }) {
 
     loadMeeting();
   });
+
+  async function deleteMeeting() {
+    toast.error('Meetup removido');
+    await api.delete(`meetings/${match.params.meetingId}`);
+  }
   return (
     <Container>
       <header>
@@ -38,7 +44,7 @@ export default function Meeting({ match }) {
               <span>Editar</span>
             </div>
           </Link>
-          <Link to="/newmeeting">
+          <Link to="/dashboard" onClick={deleteMeeting}>
             <div className="cancel">
               <FaPlus size={12} color="#fff" />
               <span>Cancelar</span>

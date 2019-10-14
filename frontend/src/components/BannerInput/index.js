@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useRef, useEffect } from 'react';
 import { useField } from '@rocketseat/unform';
 import api from '../../services/api';
@@ -21,7 +22,8 @@ export default function BannerInput() {
         path: 'dataset.file'
       });
     }
-  }, [ref, registerField]);
+  }, [ref]);
+
   async function handleChange(e) {
     const data = new FormData();
 
@@ -45,6 +47,7 @@ export default function BannerInput() {
           accept="image/*"
           data-file={file}
           onChange={handleChange}
+          ref={ref}
         />
       </label>
     </Container>
