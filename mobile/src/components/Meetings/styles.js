@@ -30,3 +30,9 @@ export const Details = styled.Text`
   color: #666;
   font-size: 14px;
 `;
+
+export const Title = styled.Text`
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 8px;
+`;

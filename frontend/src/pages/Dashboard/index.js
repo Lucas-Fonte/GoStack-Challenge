@@ -1,5 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useState, useEffect } from 'react';
+
 import { Link } from 'react-router-dom';
 import { MdChevronRight } from 'react-icons/md';
 import { FaPlus } from 'react-icons/fa';
@@ -26,6 +27,7 @@ export default function Dashboard() {
 
     loadMeetings();
   });
+
   return (
     <Container>
       <header>
