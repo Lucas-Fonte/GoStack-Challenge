@@ -12,13 +12,14 @@ export default function Dashboard() {
 
   useEffect(() => {
     async function loadMeetings() {
-      const response = await api.get('subscriptions');
+      const response = await api.get('subscribing');
 
       setMeetings(response.data);
     }
 
     loadMeetings();
-  }, []);
+  }, [setMeetings]);
+
   return (
     <Background>
       <Header />

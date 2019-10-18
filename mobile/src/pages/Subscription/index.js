@@ -12,9 +12,11 @@ export default function Meetups() {
 
   useEffect(() => {
     async function loadMeetings() {
-      const response = await api.get('meetings');
+      const response = await api.get('subscriptions');
 
-      setMeetings(response.data);
+      const subscriptions = response.data.map(sub => sub.meeting);
+
+      setMeetings(subscriptions);
     }
 
     loadMeetings();

@@ -3,6 +3,7 @@ import React, { useMemo } from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { parseISO, format } from 'date-fns';
 import pt from 'date-fns/locale/pt';
+import api from '../../services/api';
 
 import { Container, Left, Banner, Info, Details, Title } from './styles';
 import Button from '../Button';
@@ -13,6 +14,20 @@ export default function Meetings({ data, buttonText }) {
       locale: pt
     });
   }, [data.date]);
+
+  async function handleButtonAction() {
+    if (buttonText === 'Inscrever-se') {
+      await api.post('subscriptions', {
+        meeting_id: data.id
+      });
+    }
+
+    if (buttonText === 'Cancelar inscrição') {
+      await api.delete('subscriptions', {
+        meetingId: data.id
+      });
+    }
+  }
   return (
     <Container>
       <Banner
@@ -36,7 +51,7 @@ export default function Meetings({ data, buttonText }) {
           <Icon name="person" size={20} color="#666" />
           <Details>Organizador: {data.user.name}</Details>
         </Info>
-        <Button>{buttonText}</Button>
+        <Button onPress={handleButtonAction}>{buttonText}</Button>
       </Left>
     </Container>
   );
