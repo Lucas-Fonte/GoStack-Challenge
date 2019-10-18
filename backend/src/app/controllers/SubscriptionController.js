@@ -57,6 +57,27 @@ class SubscriptionController {
 
         const { meeting_id } = req.body;
 
+        const subscriptionExists = await Subscription.findOne({
+            where: {
+                user_id: req.userId,
+                meeting_id
+            }
+        });
+
+        const meetingSameTime = await Subscription.findAll({
+            where: {
+                user_id: req.userId
+            }
+        });
+
+        if (meetingSameTime) {
+            return res.json(meetingSameTime);
+        }
+
+        if (subscriptionExists) {
+            return res.status(400).json({ error: 'Subscription already done' });
+        }
+
         const subscription = await Subscription.create({
             user_id: req.userId,
             meeting_id
@@ -74,6 +95,10 @@ class SubscriptionController {
                 meeting_id
             }
         });
+
+        if (!subscription) {
+            return res.status(400).json({ error: 'Could not finding meeting' });
+        }
 
         await subscription.destroy();
 

@@ -1,4 +1,5 @@
 import Sequelize from 'sequelize';
+import Subscription from '../models/Subscription';
 import File from '../models/File';
 import User from '../models/User';
 
