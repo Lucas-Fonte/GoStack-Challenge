@@ -1,4 +1,5 @@
 import * as Yup from 'yup';
+
 import Subscription from '../models/Subscription';
 import File from '../models/File';
 import User from '../models/User';
@@ -65,12 +66,12 @@ class SubscriptionController {
     }
 
     async delete(req, res) {
-        const { meetingId } = req.body;
+        const { meeting_id } = req.body;
 
         const subscription = await Subscription.findOne({
             where: {
                 user_id: req.userId,
-                meeting_id: meetingId
+                meeting_id
             }
         });
 

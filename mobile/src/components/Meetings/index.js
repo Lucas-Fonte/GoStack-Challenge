@@ -24,7 +24,9 @@ export default function Meetings({ data, buttonText }) {
 
     if (buttonText === 'Cancelar inscrição') {
       await api.delete('subscriptions', {
-        meetingId: data.id
+        data: {
+          meeting_id: data.id
+        }
       });
     }
   }
