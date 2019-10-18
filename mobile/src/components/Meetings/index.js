@@ -7,7 +7,7 @@ import pt from 'date-fns/locale/pt';
 import { Container, Left, Banner, Info, Details, Title } from './styles';
 import Button from '../Button';
 
-export default function Meetings({ data }) {
+export default function Meetings({ data, buttonText }) {
   const dateParsed = useMemo(() => {
     return format(parseISO(data.date), "dd 'de' MMMM', às' hh'h'", {
       locale: pt
@@ -29,14 +29,14 @@ export default function Meetings({ data }) {
           <Details>{dateParsed}</Details>
         </Info>
         <Info>
-          <Icon name="map" size={20} color="#666" />
+          <Icon name="room" size={20} color="#666" />
           <Details>{data.location}</Details>
         </Info>
         <Info>
           <Icon name="person" size={20} color="#666" />
           <Details>Organizador: {data.user.name}</Details>
         </Info>
-        <Button>Cancelar Inscrição</Button>
+        <Button>{buttonText}</Button>
       </Left>
     </Container>
   );

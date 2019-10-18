@@ -4,6 +4,7 @@ import { createMaterialBottomTabNavigator } from 'react-navigation-material-bott
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 
+import Subscription from './pages/Subscription';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 
@@ -13,7 +14,7 @@ export default (isSigned = false) =>
       {
         Sign: createSwitchNavigator({ SignIn, SignUp }),
         App: createMaterialBottomTabNavigator(
-          { Dashboard, Profile },
+          { Dashboard, Subscription, Profile },
           {
             tabBarOptions: {
               keyboardHidesNavigationBar: true,

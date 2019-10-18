@@ -13,7 +13,8 @@ import {
   FormInput,
   SubmitButton,
   SignLink,
-  SignLinkText
+  SignLinkText,
+  Logo
 } from './styles';
 
 export default function SignIn({ navigation }) {
@@ -31,7 +32,7 @@ export default function SignIn({ navigation }) {
   return (
     <Background>
       <Container>
-        <Image source={logo} />
+        <Logo source={logo} />
 
         <Form>
           <FormInput

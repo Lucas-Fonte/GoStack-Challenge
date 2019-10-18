@@ -36,3 +36,8 @@ export const SignLinkText = styled.Text`
   font-weight: bold;
   font-size: 16px;
 `;
+
+export const Logo = styled.Image`
+  height: 35px;
+  width: 35px;
+`;

@@ -7,7 +7,7 @@ import Background from '../../components/Background';
 import Meetings from '../../components/Meetings';
 import Header from '../../components/Header';
 
-export default function Dashboard() {
+export default function Meetups() {
   const [meetings, setMeetings] = useState([]);
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export default function Dashboard() {
           data={meetings}
           keyExtractor={item => String(item)}
           renderItem={({ item }) => (
-            <Meetings data={item} buttonText="Inscrever-se" />
+            <Meetings data={item} buttonText="Increver-se" />
           )}
         />
       </Container>
@@ -35,9 +35,9 @@ export default function Dashboard() {
   );
 }
 
-Dashboard.navigationOptions = {
-  tabBarLabel: 'Meetups',
+Meetups.navigationOptions = {
+  tabBarLabel: 'Inscrições',
   tabBarIcon: ({ tintColor }) => (
-    <Icon name="list" size={20} color={tintColor} />
+    <Icon name="local-offer" size={20} color={tintColor} />
   )
 };
