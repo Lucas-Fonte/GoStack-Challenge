@@ -1,5 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useState, useEffect } from 'react';
+import { parseISO, format } from 'date-fns';
+import pt from 'date-fns/locale/pt';
 
 import { Link } from 'react-router-dom';
 import { MdChevronRight } from 'react-icons/md';
@@ -19,7 +21,9 @@ export default function Dashboard() {
       const meetups = data.map(meeting => ({
         id: meeting.id,
         title: meeting.title,
-        date: meeting.date
+        date: format(parseISO(meeting.date), "dd 'de' MMMM', às' hh'h'", {
+          locale: pt
+        })
       }));
 
       setMeetings(meetups);
