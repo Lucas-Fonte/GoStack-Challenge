@@ -1,10 +1,14 @@
 import styled from 'styled-components/native';
+import { Platform } from 'react-native';
 import { darken } from 'polished';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
-export const Container = styled.View`
-  padding: 20px;
+export const Container = styled.KeyboardAvoidingView.attrs({
+  enabled: Platform.OS === 'ios',
+  behavior: 'padding'
+})`
+  flex: 1;
 `;
 
 export const Separator = styled.View`
@@ -12,7 +16,10 @@ export const Separator = styled.View`
   background: rgba(255, 255, 255, 0.2);
   margin: 20px 0 30px;
 `;
-export const Form = styled.View`
+export const Form = styled.ScrollView.attrs({
+  showsVerticalScrollIndicator: false,
+  contentContainerStyle: { padding: 30 }
+})`
   align-self: stretch;
   margin-top: 50px;
 `;

@@ -12,7 +12,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     async function loadMeetings() {
-      const response = await api.get('meetings');
+      const response = await api.get('subscriptions');
 
       setMeetings(response.data);
     }

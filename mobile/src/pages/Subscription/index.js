@@ -27,7 +27,7 @@ export default function Meetups() {
           data={meetings}
           keyExtractor={item => String(item)}
           renderItem={({ item }) => (
-            <Meetings data={item} buttonText="Increver-se" />
+            <Meetings data={item} buttonText="Cancelar inscrição" />
           )}
         />
       </Container>

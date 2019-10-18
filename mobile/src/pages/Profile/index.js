@@ -1,9 +1,12 @@
-import React, { useState, useRef } from 'react';
-
+import React, { useState, useRef, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import Background from '../../components/Background';
 import Header from '../../components/Header';
+
+import { signOut } from '../../store/modules/auth/actions';
+import { updateProfileRequest } from '../../store/modules/user/actions';
 
 import {
   Container,
@@ -15,19 +18,40 @@ import {
 } from './styles';
 
 export default function Profile() {
+  const dispatch = useDispatch();
+  const profile = useSelector(state => state.user.profile);
+
   const emailRef = useRef();
   const oldPasswordRef = useRef();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const [name, setName] = useState(profile.name);
+  const [email, setEmail] = useState(profile.email);
   const [password, setPassword] = useState('');
   const [oldPassword, setOldPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  function handleSubmit() {}
+  useEffect(() => {
+    setOldPassword('');
+    setPassword('');
+    setConfirmPassword('');
+  }, [profile]);
+  function handleSubmit() {
+    dispatch(
+      updateProfileRequest({
+        name,
+        email,
+        oldPassword,
+        password,
+        confirmPassword
+      })
+    );
+  }
 
+  function handleLogout() {
+    dispatch(signOut());
+  }
   return (
     <Background>
       <Header />
@@ -93,7 +117,7 @@ export default function Profile() {
           />
 
           <SubmitButton onPress={handleSubmit}>Atualizar perfil</SubmitButton>
-          <LogOffButton onPress={handleSubmit}>Sair do Meetapp</LogOffButton>
+          <LogOffButton onPress={handleLogout}>Sair do Meetapp</LogOffButton>
         </Form>
       </Container>
     </Background>
