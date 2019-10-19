@@ -1,5 +1,3 @@
-import * as Yup from 'yup';
-
 import Subscription from '../models/Subscription';
 import File from '../models/File';
 import User from '../models/User';
@@ -47,14 +45,6 @@ class SubscriptionController {
     }
 
     async store(req, res) {
-        const schema = Yup.object().shape({
-            meeting_id: Yup.number()
-        });
-
-        if (!(await schema.isValid(req.body))) {
-            return res.status(400).json({ error: 'Validation failed' });
-        }
-
         const { meeting_id } = req.body;
 
         const subscriptionExists = await Subscription.findOne({
@@ -64,18 +54,36 @@ class SubscriptionController {
             }
         });
 
-        const meetingSameTime = await Subscription.findAll({
+        if (subscriptionExists) {
+            return res.status(400).json({ error: 'Subscription already done' });
+        }
+
+        const thisMeetingTime = await Meeting.findByPk(meeting_id);
+
+        const meetingsTime = await Subscription.findAll({
             where: {
                 user_id: req.userId
+            },
+            include: {
+                model: Meeting,
+                as: 'meeting',
+                attributes: ['date']
             }
         });
 
-        if (meetingSameTime) {
-            return res.json(meetingSameTime);
-        }
+        const currentMeetingsTime = meetingsTime.map(meetup =>
+            String(meetup.meeting.date)
+        );
 
-        if (subscriptionExists) {
-            return res.status(400).json({ error: 'Subscription already done' });
+        const isMeetingTaken = currentMeetingsTime.find(
+            meetingTime => meetingTime === String(thisMeetingTime.date)
+        );
+
+        if (isMeetingTaken) {
+            return res.status(400).json({
+                error:
+                    'Cannot subscribe to two meetings happening at the same time'
+            });
         }
 
         const subscription = await Subscription.create({
