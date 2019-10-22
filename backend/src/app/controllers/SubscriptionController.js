@@ -3,6 +3,7 @@ import Subscription from '../models/Subscription';
 import File from '../models/File';
 import User from '../models/User';
 import Meeting from '../models/Meeting';
+import Mail from '../../lib/Mail';
 
 class SubscriptionController {
     async index(req, res) {
@@ -51,7 +52,14 @@ class SubscriptionController {
     async store(req, res) {
         const { meeting_id } = req.body;
 
-        const thisMeeting = await Meeting.findByPk(meeting_id);
+        const thisMeeting = await Meeting.findByPk(meeting_id, {
+            include: [
+                {
+                    model: User,
+                    as: 'user'
+                }
+            ]
+        });
 
         if (thisMeeting.user_id === req.user_id) {
             return res
@@ -99,6 +107,12 @@ class SubscriptionController {
         const subscription = await Subscription.create({
             user_id: req.userId,
             meeting_id
+        });
+
+        await Mail.sendMail({
+            to: `${thisMeeting.user.name} <${thisMeeting.user.email}>`,
+            subject: 'Inscrição realizada',
+            text: 'Você tem um novo inscrito'
         });
 
         return res.json(subscription);
