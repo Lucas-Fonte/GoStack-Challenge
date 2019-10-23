@@ -4,9 +4,11 @@ Este é o desafio final para graduação do bootcamp Go-Stack.
 
 ## Visuals
 
+![Andy's room](https://onceuponapicture.files.wordpress.com/2016/10/glenn-kim-andys-room.jpg "Quarto do Andy")
+
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+Use um package manager, [yarn] ou [npm] , para instalar as dependências.
 
 ```bash
 cd backend
