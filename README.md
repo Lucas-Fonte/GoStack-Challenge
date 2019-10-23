@@ -12,7 +12,7 @@ Este é o desafio final para graduação do bootcamp Go-Stack da [Rocketseat](ht
 
 ![Meetapp](https://user-images.githubusercontent.com/53484547/67404553-f1f1ef80-f589-11e9-810b-c19778ae4206.png "Meetapp Screenshot")
 
-Exemplo de meetup organizado pelo usuário do browser, disponível  
+Exemplo de meetup organizado pelo usuário do browser, disponível para os usuários mobile. 
 
 ## Installation
 
