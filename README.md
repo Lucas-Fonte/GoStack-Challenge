@@ -17,8 +17,7 @@ Exemplo de meetup organizado pelo usuário do browser, disponível para os usuá
 ## Installation
 
 Para inicializar o projeto
-```
- bash
+```bash
  git clone https://github.com/Lucas-Fonte/GoStack-Challenge.git
 ```
 Ou faça o download do .zip do projeto.
@@ -31,7 +30,6 @@ Caso possua o [Docker](https://docs.docker.com/docker-for-mac/install/), uma op�
 ```
  Exemplo com credenciais padrão do projeto
  
- bash
  docker run --name database -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres:11
 ```
 Outra opção seria fazer o download direto do [postgres](https://www.postgresql.org/download/) e roda-lo com as mesmas credenciais.
