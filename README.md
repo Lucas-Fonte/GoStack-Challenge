@@ -18,7 +18,7 @@ Exemplo de meetup organizado pelo usuário do browser, disponível para os usuá
 
 Para o banco de dados, pode ser utilizado qualquer banco SQL, para este projeto foi utilizado **PostgreSQL**.
 
-Caso possua o [Docker](https://docs.docker.com/docker-for-mac/install/) ou tenha interesse em baixa-lo, é uma opção para apenas criar um container do PostgreSQL. 
+Caso possua o [Docker](https://docs.docker.com/docker-for-mac/install/), uma opção seria apenas criar um container do PostgreSQL. 
 
 
 ```
@@ -53,7 +53,7 @@ cd mobile
 yarn 
 yarn start
 ```
-E tudo pronto, agora basta aproveitar a criação de meetups entre vários usuários.
+Tudo pronto, agora basta aproveitar a criação de meetups entre vários usuários.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
