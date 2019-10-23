@@ -31,7 +31,7 @@ Outra opção seria fazer o download direto do [postgres](https://www.postgresql
 
 Com o banco de dados configurado, basta criar uma *database* chamada 'meetapp', ou como optar por chama-lá, lembrando sempre de alterar a variável no arquivo **.env**.
 
-*Versão 11 utilizada, pois a versão 12 apresentou problemas ao introduzir as migrations*
+*(Versão 11 utilizada, pois a versão 12 apresentou problemas ao introduzir as migrations)*
 
 Use um package manager, [yarn](https://yarnpkg.com/en/docs/install#mac-stable) ou [npm](https://www.npmjs.com/get-npm) , para instalar as dependências.
 
