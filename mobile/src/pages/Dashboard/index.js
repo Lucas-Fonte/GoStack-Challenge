@@ -56,7 +56,7 @@ export default function Dashboard() {
         </DatePicker>
         <List
           data={meetings}
-          keyExtractor={item => String(item)}
+          keyExtractor={item => String(item.id)}
           renderItem={({ item }) => (
             <Meetings data={item} buttonText="Inscrever-se" />
           )}

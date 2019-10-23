@@ -27,7 +27,7 @@ export default function Meetups() {
       <Container>
         <List
           data={meetings}
-          keyExtractor={item => String(item)}
+          keyExtractor={item => String(item.id)}
           renderItem={({ item }) => (
             <Meetings data={item} buttonText="Cancelar inscrição" />
           )}
