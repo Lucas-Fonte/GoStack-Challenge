@@ -16,6 +16,13 @@ Exemplo de meetup organizado pelo usuário do browser, disponível para os usuá
 
 ## Installation
 
+Para inicializar o projeto
+```
+ bash
+ git clone https://github.com/Lucas-Fonte/GoStack-Challenge.git
+```
+Ou faça o download do .zip do projeto.
+
 Para o banco de dados, pode ser utilizado qualquer banco SQL, para este projeto foi utilizado **PostgreSQL**.
 
 Caso possua o [Docker](https://docs.docker.com/docker-for-mac/install/), uma opção seria apenas criar um container do PostgreSQL. 
