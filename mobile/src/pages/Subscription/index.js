@@ -20,7 +20,7 @@ export default function Meetups() {
     }
 
     loadMeetings();
-  }, []);
+  }, [meetings, setMeetings]);
   return (
     <Background>
       <Header />

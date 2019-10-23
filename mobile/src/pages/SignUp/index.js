@@ -31,6 +31,7 @@ export default function SignUp({ navigation }) {
 
   function handleSubmit() {
     dispatch(signUpRequest(name, email, password));
+    navigation.navigate('SignIn');
   }
   return (
     <Background>

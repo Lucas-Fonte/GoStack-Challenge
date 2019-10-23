@@ -39,7 +39,7 @@ export default function Dashboard() {
     }
 
     loadMeetings();
-  }, [date, setMeetings]);
+  }, [date, meetings, setMeetings]);
 
   return (
     <Background>
