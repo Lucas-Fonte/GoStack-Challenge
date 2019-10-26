@@ -55,14 +55,15 @@ yarn start
 
 ```bash
 cd mobile
-yarn 
+yarn
+cd ios
+pod install
 yarn start
 ```
 Tudo pronto, agora basta aproveitar a criação de meetups entre vários usuários.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
-Rendered
 Meetapp
 Meetapp é uma aplicação full-stack para organização e inscrição de meetups, feita com NodeJS, ReactJS e React Native(iOS).
 
