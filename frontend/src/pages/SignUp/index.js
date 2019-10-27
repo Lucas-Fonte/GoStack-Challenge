@@ -26,7 +26,7 @@ export default function SingUp() {
   }
   return (
     <>
-      <img src={logo} alt="GoBarber" width="50" height="40" />
+      <img src={logo} alt="Meetapp" width="50" height="40" />
 
       <Form schema={schema} onSubmit={handleSubmit}>
         <Input name="name" placeholder="Nome completo" />

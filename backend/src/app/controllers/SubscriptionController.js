@@ -109,10 +109,19 @@ class SubscriptionController {
             meeting_id
         });
 
+        const thisUser = await User.findByPk(req.userId);
+
         await Mail.sendMail({
             to: `${thisMeeting.user.name} <${thisMeeting.user.email}>`,
             subject: 'Inscrição realizada',
-            text: 'Você tem um novo inscrito'
+            template: 'subscription',
+            context: {
+                host: thisMeeting.user.name,
+                title: thisMeeting.title,
+                user: thisUser.name,
+                email: thisUser.email,
+                date: thisMeeting.date
+            }
         });
 
         return res.json(subscription);
