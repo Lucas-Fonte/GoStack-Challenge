@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { MdBorderColor, MdClear } from 'react-icons/md';
 import { FaPlus, FaCalendarAlt, FaMapMarked } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import api from '../../services/api';
@@ -40,13 +41,13 @@ export default function Meeting({ match }) {
         <aside>
           <Link to={`/edit/${meeting.id}`}>
             <div className="edit">
-              <FaPlus size={12} color="#fff" />
+              <MdBorderColor size={12} color="#fff" />
               <span>Editar</span>
             </div>
           </Link>
           <Link to="/dashboard" onClick={deleteMeeting}>
             <div className="cancel">
-              <FaPlus size={12} color="#fff" />
+              <MdClear size={12} color="#fff" />
               <span>Cancelar</span>
             </div>
           </Link>
